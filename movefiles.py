@@ -9,12 +9,13 @@ dest2 = 'E:\\Video'
 dest3 = 'C:\\Users\\ukki\\Downloads\\pdf_files'
 dest4 = 'C:\\Users\\ukki\\Downloads\\exe_files'
 
-#list of
+#list of filetype i want moved
 pics = ['jpg', 'jpeg', 'bmp', 'gif', 'png']
 vids = ['webm', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', 'ogg', 'mp4', 'm4p', 'm4v', 'flv']
 exe = ['exe']
 pdf = ['pdf']
 
+#creating a list of files to move
 def find_files(args):
     filelist = []
     all_files = glob.glob('C:\\Users\\ukki\\Downloads\\*')
@@ -25,6 +26,7 @@ def find_files(args):
     return filelist
 
 
+#moving the files and adding date+time to the filename (also adding "X" at the end if the file already existed in the folder)
 def move_files(here, there):
     for file in here:
         dest = file.replace('C:\\Users\\ukki\\Downloads', there)
@@ -32,7 +34,6 @@ def move_files(here, there):
         if os.path.exists(dest):
             dest = dest.replace('.', 'X.')
         shutil.move(file, dest)
-        print(dest.replace(there, ''))
 
 
 pictures_list = find_files(pics)
